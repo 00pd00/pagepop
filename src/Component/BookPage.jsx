@@ -27,8 +27,8 @@ const BookPage = () => {
   console.log(current)
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4 flex justify-center items-start">
-      <div className="bg-white rounded-xl shadow-md max-w-3xl w-full p-6">
+    <div className="min-h-screen bg-gray-100  p-4 flex justify-center items-start">
+      <div className="bg-white rounded-xl shadow-md  w-full mt-12 p-6">
         <div className="flex flex-col md:flex-row gap-6">
           <img
             src={current.imageLinks?.thumbnail}
