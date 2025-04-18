@@ -22,7 +22,6 @@ const Body = () => {
     
     catch (error) {
       setError(error)
-      console.log(errors)
     }
   };
 

@@ -1,27 +1,28 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import BookContext from "../utils/BookContext";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../utils/FavSlice";
+import { FaHeart } from "react-icons/fa";
 
 const BookCard = ({ displaydata }) => {
-  
-    const {setCurrent, current} = useContext(BookContext)
+  const { setCurrent } = useContext(BookContext);
+  const dispatch = useDispatch();
+  const favorites = useSelector((store) => store.cart.items);
 
-     const dispatch = useDispatch()
-    const handleAdd = (item) => {
-        dispatch(addItem(item))
-
-    }
-
+  const handleAdd = (item) => {
+    dispatch(addItem(item));
+  };
 
   const fallbackImage =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEC4mXNVekSV0maL9XW5AH4nlCatkVKGt5vQ&s";
 
-    return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
-        {displaydata.map((item, index) => (
-          <div key={index} className="flex flex-col items-center">
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
+      {displaydata.map((item, index) => {
+        const isFav = favorites.some(fav => fav.title === item.title);
+        return (
+          <div key={index} className="flex flex-col items-center relative">
             <Link
               to="/bookpage"
               onClick={() => setCurrent(item)}
@@ -33,23 +34,25 @@ const BookCard = ({ displaydata }) => {
                 className="w-32 h-48 object-cover rounded mb-2"
               />
               <div>
-                <h3 className="font-semibold text-lg line-clamp-1">{item.title}</h3>
+                <h3 className="font-semibold text-lg line-clamp-1">
+                  {item.title}
+                </h3>
                 <p className="text-sm text-gray-500 line-clamp-1">
                   {item.authors?.join(", ") || "Unknown Author"}
                 </p>
               </div>
             </Link>
             <button
-              onClick={() => handleAdd(item)}
-              className="mt-2 bg-blue-600 text-white px-4 py-1 rounded text-sm hover:bg-blue-700"
+              onClick={() => !isFav && handleAdd(item)}
+              className="absolute top-3 right-4 text-xl"
             >
-              Add
+              <FaHeart  color={isFav ? "red" : "gray"} />
             </button>
           </div>
-        ))}
-      </div>
-    );
-    
+        );
+      })}
+    </div>
+  );
 };
 
 export default BookCard;
