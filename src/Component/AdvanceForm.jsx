@@ -115,21 +115,25 @@ const AdvanceForm = () => {
       <div className="max-w-6xl mx-auto mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {paginatedBooks.map((item, index) => (
           <Link
-            to={"/bookpage"}
-            onClick={() => setCurrent(item)}
-            key={index}
-            className="bg-white rounded-xl shadow hover:shadow-lg transition-all p-4 flex flex-col items-center text-center"
-          >
-            <img
-              src={item?.imageLinks?.thumbnail || fallbackImage}
-              alt="book"
-              className="w-32 h-48 object-cover rounded mb-2"
-            />
-            <h3 className="font-semibold text-lg line-clamp-2">{item.title}</h3>
-            <p className="text-sm text-gray-500">
-              {item.authors?.join(", ") || "Unknown Author"}
-            </p>
-          </Link>
+          to={"/bookpage"}
+          onClick={() => setCurrent(item)}
+          key={index}
+          className="bg-white rounded-xl shadow hover:shadow-lg transition-all p-4 flex flex-col items-center text-center h-full"
+        >
+          <img
+            src={item?.imageLinks?.thumbnail || fallbackImage}
+            alt="book"
+            className="w-32 h-48 object-cover rounded mb-2"
+          />
+          <h3 className="font-semibold text-lg line-clamp-2 min-h-[3rem]">{item.title}</h3>
+          <p className="text-sm text-gray-500 mb-2">
+            {item.authors?.join(", ") || "Unknown Author"}
+          </p>
+          <button className="mt-auto bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600">
+            Remove
+          </button>
+        </Link>
+        
         ))}
       </div>
 
