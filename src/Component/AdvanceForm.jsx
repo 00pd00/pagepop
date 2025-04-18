@@ -27,6 +27,11 @@ const AdvanceForm = () => {
         `https://www.googleapis.com/books/v1/volumes?q=intitle:${titleQuery}&maxResults=20&startIndex=0`
       );
     }
+    else if (titleQuery.length === 0) {
+      data = await fetch(
+        `https://www.googleapis.com/books/v1/volumes?q=inauthor:${authorQuery}&maxResults=20&startIndex=0`
+      );
+    }  
     else {
        data = await fetch(
         `https://www.googleapis.com/books/v1/volumes?q=intitle:${titleQuery}+inauthor:${authorQuery}&maxResults=9&startIndex=0`
