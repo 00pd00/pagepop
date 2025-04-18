@@ -11,7 +11,7 @@ const BookCard = ({ displaydata }) => {
   const favorites = useSelector((store) => store.cart.items);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = 9;
 
   const handleAdd = (item) => {
     dispatch(addItem(item));
