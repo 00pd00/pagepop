@@ -7,13 +7,12 @@ const Body = () => {
   const [displaydata, setdisplaydata] = useState([]);
   const [titleQuery, settitleQuery] = useState("");
   const [errors, setError] = useState(null);
-  const [authorQuery, setauthorQuery] = useState("");
 
   
   const datafetch = async () => {
     try {
       const data = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=intitle:${titleQuery}+inauthor:${authorQuery}&maxResults=20&startIndex=0`
+        `https://www.googleapis.com/books/v1/volumes?q=intitle:${titleQuery}&maxResults=20&startIndex=0`
       );
       const datajson = await data.json();
       const volumeInfo = datajson?.items.map(item => item?.volumeInfo) || [];
