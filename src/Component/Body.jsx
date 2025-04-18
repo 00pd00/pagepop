@@ -12,7 +12,7 @@ const Body = () => {
   const datafetch = async () => {
     try {
       const data = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=intitle:${titleQuery}&maxResults=20&startIndex=0`
+        `https://www.googleapis.com/books/v1/volumes?q=intitle:${titleQuery}&maxResults=40&startIndex=0`
       );
       const datajson = await data.json();
       const volumeInfo = datajson?.items.map(item => item?.volumeInfo) || [];
