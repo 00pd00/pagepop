@@ -64,7 +64,6 @@ const BookCard = ({ displaydata }) => {
         })}
       </div>
 
-      {/* Pagination Controls */}
       <div className="flex justify-center mt-6 gap-2">
         <button
           className="px-4 py-1 bg-gray-200 rounded disabled:opacity-50"

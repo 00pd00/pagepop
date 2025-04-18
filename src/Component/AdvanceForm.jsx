@@ -137,7 +137,6 @@ const AdvanceForm = () => {
         ))}
       </div>
 
-      {/* Pagination */}
       {displaydata.length > 0 && (
         <div className="flex justify-center mt-8 gap-3">
           <button
