@@ -32,80 +32,74 @@
 
 ---
 
-## 🛠 Installation & Setup
+# PagePop
 
-### 1. Clone the repository
+## Installation and Setup
 
-```bash
-git clone https://github.com/your-username/pagepop.git
-cd pagepop
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/pagepop.git
+    cd pagepop
+    ```
+
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+
+3. Run the development server:
+    ```bash
+    npm run dev
+    ```
+    The app will be available at: [http://localhost:5173](http://localhost:5173)
 
 
-2. Install dependencies
-bash
-Copy
-Edit
-npm install
-3. Run the development server
-bash
-Copy
-Edit
-npm run dev
-App will be available at: http://localhost:5173
+# PagePop
 
-🏗 Build and Preview
+## Build and Preview
 To create and preview the production build:
 
-bash
-Copy
-Edit
-npm run build
-npm run preview
-⚠️ Ensure your Redux slices have valid initial states (e.g., items: []) to avoid preview errors.
+1. Run the following commands:
+    ```bash
+    npm run build
+    npm run preview
+    ```
+    ⚠️ Ensure your Redux slices have valid initial states (e.g., items: []) to avoid preview errors.
 
-🔥 Firebase Hosting
+## Firebase Hosting
 This app is hosted on Firebase. To host your own version:
 
 1. Login to Firebase
-bash
-Copy
-Edit
-firebase login
+    ```bash
+    firebase login
+    ```
+
 2. Initialize Firebase in your project
-bash
-Copy
-Edit
-firebase init
-Choose Hosting
-
-Set dist/ as your public directory
-
-Enable Single Page Application mode
+    ```bash
+    firebase init
+    ```
+    - Choose Hosting
+    - Set `dist/` as your public directory
+    - Enable Single Page Application mode
 
 3. Deploy to Firebase
-bash
-Copy
-Edit
-npm run build
-firebase deploy
-✅ Testing
+    ```bash
+    npm run build
+    firebase deploy
+    ```
+
+## Testing
 To run tests (if included):
 
-bash
-Copy
-Edit
-npm run test
-Test cases use React Testing Library for verifying main functionalities.
+1. Run the following command:
+    ```bash
+    npm run test
+    ```
+    Test cases use React Testing Library for verifying main functionalities.
 
-📬 Contact
-Created by Prathamesh Deshmukh
-📬 For queries, connect at: your-email@example.com
+## Contact
+Created by Prathamesh Deshmukh  
+For queries, connect at: your-email@example.com
 
-📎 Live URL
-🌐 https://pagepop-ec12f.web.app/
-
-vbnet
-Copy
-Edit
-
-Let me know if you want to add contribution guidelines or license info!
+## Live URL
+🌐 [https://pagepop-ec12f.web.app/](https://pagepop-ec12f.web.app/)
