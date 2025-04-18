@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import BookContext from "../utils/BookContext";
+import { Link } from "react-router-dom";
 
 const fallbackImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEC4mXNVekSV0maL9XW5AH4nlCatkVKGt5vQ&s";
 
@@ -7,6 +9,9 @@ const AdvanceForm = () => {
   const [titleQuery, settitleQuery] = useState("");
   const [authorQuery, setauthorQuery] = useState("");
   const [error, setError] = useState("");
+
+    const { setCurrent } = useContext(BookContext);
+  
 
   const datafetch = async (e) => {
     e.preventDefault();
@@ -79,7 +84,9 @@ const AdvanceForm = () => {
 
       <div className="max-w-6xl mx-auto mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {displaydata.map((item, index) => (
-          <div
+          <Link
+            to={"/bookpage"}
+            onClick={() => setCurrent(item) }
             key={index}
             className="bg-white rounded-xl shadow hover:shadow-lg transition-all p-4 flex flex-col items-center text-center"
           >
@@ -92,7 +99,7 @@ const AdvanceForm = () => {
             <p className="text-sm text-gray-500">
               {item.authors?.join(", ") || "Unknown Author"}
             </p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

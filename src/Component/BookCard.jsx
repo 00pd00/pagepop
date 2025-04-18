@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useMemo } from "react";
 import { Link } from "react-router-dom";
 import BookContext from "../utils/BookContext";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../utils/FavSlice";
 import { FaHeart } from "react-icons/fa";
 
-const BookCard = ({ displaydata }) => {
+const BookCard =  ({ displaydata }) => {
   const { setCurrent } = useContext(BookContext);
   const dispatch = useDispatch();
   const favorites = useSelector((store) => store.cart.items);
@@ -15,12 +15,12 @@ const BookCard = ({ displaydata }) => {
   };
 
   const fallbackImage =
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEC4mXNVekSV0maL9XW5AH4nlCatkVKGt5vQ&s";
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEC4mXNVekSV0maL9XW5AH4nlCatkVKGt5vQ&s"; // maintaining this will be hassle either add to some static store like cloudinary or S3
 
-  return (
+  return favorites ? (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
       {displaydata.map((item, index) => {
-        const isFav = favorites.some(fav => fav.title === item.title);
+        const isFav = favorites?.some(fav => fav?.title === item?.title);
         return (
           <div key={index} className="flex flex-col items-center relative">
             <Link
@@ -52,7 +52,9 @@ const BookCard = ({ displaydata }) => {
         );
       })}
     </div>
-  );
+  ) : (
+    <div>Error Page</div>  
+  )
 };
 
 export default BookCard;

@@ -1,17 +1,14 @@
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import Body from "./Component/Body";
-import BookPage from "./Component/BookPage";
 import Header from "./Component/HeadnFoot/Header";
 import BookContext from "./utils/BookContext";
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import BookNotFound from "./Component/ErrorPages/BookNotFound";
 import NotFoundPage from "./Component/ErrorPages/NotFound";
 import About from "./Component/About";
-import Favorites from "./Component/Favorites";
 import { Provider } from "react-redux";
 import { persistor, store } from "./utils/FavoriteStore";
 import { PersistGate } from "redux-persist/lib/integration/react";
-import AdvanceForm from "./Component/AdvanceForm";
+import Loading from "./Component/Loadin";
 
 const App = () => {
   const [current, setCurrent] = useState(null);
@@ -33,6 +30,11 @@ const App = () => {
   );
 };
 
+const Favorites = lazy(() => import("./Component/Favorites") )
+const BookPage = lazy(() => import("./Component/BookPage") )
+const AdvanceForm = lazy(() => import("./Component/AdvanceForm") )
+const Body = lazy(() => import("./Component/Body") )
+
 const AppRouter = createBrowserRouter([
   {
     path: "/",
@@ -41,12 +43,12 @@ const AppRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Body />,
+        element: <Suspense fallback={<Loading/>} ><Body/></Suspense>,
         errorElement: <NotFoundPage />
       },
       {
         path: "/BookPage",
-        element: <BookPage />,
+        element:  <Suspense fallback={<Loading/>} ><BookPage/></Suspense>,
         errorElement: <BookNotFound />
       },
       {
@@ -56,12 +58,12 @@ const AppRouter = createBrowserRouter([
       },
       {
         path: "/favorites",
-        element: <Favorites />,
+        element: <Suspense fallback={<Loading/>} ><Favorites/></Suspense>,
         errorElement: <NotFoundPage />
       },
       {
         path: "/Search",
-        element: <AdvanceForm />,
+        element:  <Suspense fallback={<Loading/>} ><AdvanceForm/></Suspense>,
         errorElement: <NotFoundPage />
       }
     ]
