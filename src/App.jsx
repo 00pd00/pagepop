@@ -7,7 +7,7 @@ import NotFoundPage from "./Component/ErrorPages/NotFound";
 import { Provider } from "react-redux";
 import { persistor, store } from "./utils/FavoriteStore";
 import { PersistGate } from "redux-persist/lib/integration/react";
-import Loading from "./Component/Loadin";
+import Loading from "./Component/ErrorPages/Loadin";
 
 const App = () => {
   const [current, setCurrent] = useState(null);
@@ -29,11 +29,11 @@ const App = () => {
   );
 };
 
-const Favorites = lazy(() => import("./Component/Favorites") )
-const BookPage = lazy(() => import("./Component/BookPage") )
-const AdvanceForm = lazy(() => import("./Component/AdvanceForm") )
-const Body = lazy(() => import("./Component/Body") )
-const About = lazy(() => import("./Component/About") )
+const Favorites = lazy(() => import("./Component/Pages/Favorites"));
+const BookPage = lazy(() => import("./Component/BookPages/BookPage"));
+const AdvanceForm = lazy(() => import("./Component/Pages/AdvanceForm"));
+const Body = lazy(() => import("./Component/Body"));
+const About = lazy(() => import("./Component/Pages/About"));
 
 const AppRouter = createBrowserRouter([
   {
@@ -43,27 +43,47 @@ const AppRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Suspense fallback={<Loading/>} ><Body/></Suspense>,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Body />
+          </Suspense>
+        ),
         errorElement: <NotFoundPage />
       },
       {
         path: "/BookPage",
-        element:  <Suspense fallback={<Loading/>} ><BookPage/></Suspense>,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <BookPage />
+          </Suspense>
+        ),
         errorElement: <BookNotFound />
       },
       {
         path: "/about",
-        element: <Suspense fallback={<Loading/>} ><About/></Suspense>,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <About />
+          </Suspense>
+        ),
         errorElement: <NotFoundPage />
       },
       {
         path: "/favorites",
-        element: <Suspense fallback={<Loading/>} ><Favorites/></Suspense>,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Favorites />
+          </Suspense>
+        ),
         errorElement: <NotFoundPage />
       },
       {
         path: "/Search",
-        element:  <Suspense fallback={<Loading/>} ><AdvanceForm/></Suspense>,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <AdvanceForm />
+          </Suspense>
+        ),
         errorElement: <NotFoundPage />
       }
     ]

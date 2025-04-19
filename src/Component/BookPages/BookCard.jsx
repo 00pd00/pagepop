@@ -1,10 +1,9 @@
 import React, { useContext, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import BookContext from "../utils/BookContext";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem } from "../utils/FavSlice";
+import { addItem } from "../../utils/FavSlice";
 import { FaHeart } from "react-icons/fa";
-import { setCurrent } from "../utils/FavSlice";
+import { setCurrent } from "../../utils/FavSlice";
 
 const BookCard = ({ displaydata }) => {
   // const { setCurrent } = useContext(BookContext);

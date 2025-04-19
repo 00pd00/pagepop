@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeItem, clearCart } from "../utils/FavSlice";
+import { removeItem, clearCart } from "../../utils/FavSlice";
 import { Link } from "react-router-dom";
-import { setCurrent } from "../utils/FavSlice";
+import { setCurrent } from "../../utils/FavSlice";
 
 
 const Favorites = () => {

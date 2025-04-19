@@ -1,6 +1,6 @@
 import React, {  useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { setCurrent } from "../utils/FavSlice";
+import { setCurrent } from "../../utils/FavSlice";
 import { useDispatch } from "react-redux";
 
 const fallbackImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEC4mXNVekSV0maL9XW5AH4nlCatkVKGt5vQ&s";
