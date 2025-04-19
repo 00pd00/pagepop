@@ -4,11 +4,15 @@ import BookContext from "../utils/BookContext";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../utils/FavSlice";
 import { FaHeart } from "react-icons/fa";
+import { setCurrent } from "../utils/FavSlice";
 
 const BookCard = ({ displaydata }) => {
-  const { setCurrent } = useContext(BookContext);
+  // const { setCurrent } = useContext(BookContext);
   const dispatch = useDispatch();
   const favorites = useSelector((store) => store.cart.items);
+  const current = useSelector((store) => store.cart.current);
+
+  console.log(current)
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
@@ -36,7 +40,7 @@ const BookCard = ({ displaydata }) => {
             <div key={index} className="flex flex-col items-center relative">
               <Link
                 to="/bookpage"
-                onClick={() => setCurrent(item)}
+                onClick={() => dispatch(setCurrent(item))}
                 className="bg-white w-full h-80 rounded-xl shadow hover:shadow-lg transition-all p-4 flex flex-col items-center text-center justify-between"
               >
                 <img

@@ -4,7 +4,6 @@ import BookContext from "./utils/BookContext";
 import { lazy, Suspense, useEffect, useState } from "react";
 import BookNotFound from "./Component/ErrorPages/BookNotFound";
 import NotFoundPage from "./Component/ErrorPages/NotFound";
-import About from "./Component/About";
 import { Provider } from "react-redux";
 import { persistor, store } from "./utils/FavoriteStore";
 import { PersistGate } from "redux-persist/lib/integration/react";
@@ -34,6 +33,7 @@ const Favorites = lazy(() => import("./Component/Favorites") )
 const BookPage = lazy(() => import("./Component/BookPage") )
 const AdvanceForm = lazy(() => import("./Component/AdvanceForm") )
 const Body = lazy(() => import("./Component/Body") )
+const About = lazy(() => import("./Component/About") )
 
 const AppRouter = createBrowserRouter([
   {
@@ -53,7 +53,7 @@ const AppRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About />,
+        element: <Suspense fallback={<Loading/>} ><About/></Suspense>,
         errorElement: <NotFoundPage />
       },
       {

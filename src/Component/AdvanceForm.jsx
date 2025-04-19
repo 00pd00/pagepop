@@ -1,7 +1,7 @@
-import React, { useContext, useState, useMemo } from "react";
-import BookContext from "../utils/BookContext";
+import React, {  useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import Footer from "./HeadnFoot/Footer";
+import { setCurrent } from "../utils/FavSlice";
+import { useDispatch } from "react-redux";
 
 const fallbackImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEC4mXNVekSV0maL9XW5AH4nlCatkVKGt5vQ&s";
 
@@ -13,7 +13,8 @@ const AdvanceForm = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
-  const { setCurrent } = useContext(BookContext);
+  const dispatch = useDispatch()
+
 
   const datafetch = async (e) => {
     e.preventDefault();
@@ -116,7 +117,7 @@ const AdvanceForm = () => {
         {paginatedBooks.map((item, index) => (
           <Link
           to={"/bookpage"}
-          onClick={() => setCurrent(item)}
+          onClick={() => dispatch(setCurrent(item))}
           key={index}
           className="bg-white rounded-xl shadow hover:shadow-lg transition-all p-4 flex flex-col items-center text-center h-full"
         >

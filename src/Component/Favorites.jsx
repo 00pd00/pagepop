@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeItem, clearCart } from "../utils/FavSlice";
 import { Link } from "react-router-dom";
-import BookContext from "../utils/BookContext";
+import { setCurrent } from "../utils/FavSlice";
+
 
 const Favorites = () => {
   const fallbackImage =
@@ -19,7 +20,6 @@ const Favorites = () => {
     dispatch(removeItem(book)); 
   };
 
-  const { setCurrent } = useContext(BookContext);
 
   return (
     <div className="min-h-screen bg-gray-100 p-4 pt-20">
@@ -31,7 +31,7 @@ const Favorites = () => {
           <div key={index} className="bg-white p-3 rounded-xl shadow text-center">
             <Link
               to={"/bookpage"}
-              onClick={() => setCurrent(book)}
+              onClick={() => dispatch(setCurrent(book))}
               className="block"
             >
               <img
