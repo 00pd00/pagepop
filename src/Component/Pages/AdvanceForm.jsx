@@ -129,10 +129,7 @@ const AdvanceForm = () => {
           <h3 className="font-semibold text-lg line-clamp-2 min-h-[3rem]">{item.title}</h3>
           <p className="text-sm text-gray-500 mb-2">
             {item.authors?.join(", ") || "Unknown Author"}
-          </p>
-          <button className="mt-auto bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600">
-            Remove
-          </button>
+          </p>          
         </Link>
         
         ))}
