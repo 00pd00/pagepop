@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../utils/FavSlice";
@@ -6,7 +6,6 @@ import { FaHeart } from "react-icons/fa";
 import { setCurrent } from "../../utils/FavSlice";
 
 const BookCard = ({ displaydata }) => {
-  // const { setCurrent } = useContext(BookContext);
   const dispatch = useDispatch();
   const favorites = useSelector((store) => store.cart.items);
   const current = useSelector((store) => store.cart.current);
@@ -16,7 +15,7 @@ const BookCard = ({ displaydata }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
 
-  const handleAdd = (item) => {
+  const handleAdd = (item) => { 
     dispatch(addItem(item));
   };
 

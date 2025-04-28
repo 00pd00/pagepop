@@ -1,12 +1,21 @@
 import React, { useContext } from "react";
 import BookContext from "../../utils/BookContext";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { FaHeart } from "react-icons/fa";
 
 const BookPage = () => {
 
   const currentpage = useSelector((store) => store.cart.current[0]);
+    const favorites = useSelector((store) => store.cart.items);
+    const isFav = favorites?.some((fav) => fav?.title === currentpage?.title);
+    const dispatch = useDispatch();
+    const handleAdd = (currentpage) => { 
+        dispatch(addItem(currentpage));
+      };
 
-  console.log(currentpage)
+  
+
+  console.log(isFav)
 
   return (
     <div className="min-h-screen bg-gray-100 p-4 flex justify-center items-start">
@@ -51,6 +60,12 @@ const BookPage = () => {
             >
               Preview Book
             </a>
+            <button
+              onClick={() => !isFav && handleAdd(currentpage)}
+              className=" top-3 right-4 text-xl"
+            >
+              <FaHeart color={isFav ? "red" : "gray"} />
+            </button>
           </div>
         </div>
 
